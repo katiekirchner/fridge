@@ -1,0 +1,5 @@
+.env.development.local
+node_modules/
+/application/node_modules/
+/application/backend/node_modules/
+.env

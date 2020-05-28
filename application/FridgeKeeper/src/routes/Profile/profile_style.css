@@ -1,0 +1,106 @@
+/* Profile style*/
+.personal_info {
+    background: #abdde5;
+    display: block;
+    text-align: center;
+    height: 200px;
+}
+
+.profile_img {
+    width: 100px;
+    padding-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profile_name {
+    font-weight: bold;
+    color: #117a8b;
+    padding-top: 10px;
+}
+
+p {
+    margin: 0;
+}
+.user_info {
+    color: #6c757d;
+    font-size: small;
+    padding-top: 5px;
+    padding-bottom: 20px;
+}
+
+.account_info {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+    width: 80%;
+    padding-left: 30px;
+    border-style: solid;
+    border-color: #abdde5;
+}
+
+.title_section {
+    font-weight: bold;
+    color: #117a8b;
+    font-size: medium;
+    padding-top: 20px;
+}
+
+ul {
+    padding: 15px;
+    list-style-type: square;
+}
+
+.profile_settings {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+    width: 80%;
+}
+
+.card-style {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+
+.return_btn {
+    height: 60px;
+    width: 60px;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.account_settings {
+    display: block;
+    text-align: center;
+    height: 210px;
+}
+
+.link {
+    color: dodgerblue;
+    font-size: small;
+    padding-bottom: 15px;
+}
+
+.form_settings {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+    width: 80%;
+    text-align: left;
+}
+
+.switch {
+    margin-top: -25px;
+    margin-left: 300px;
+}
+.title {
+    padding-bottom: 30px;
+    font-weight: bold;
+}
+
+.subtitle {
+    padding-bottom: 15px;
+}

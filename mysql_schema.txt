@@ -1,0 +1,161 @@
+DROP TABLE IF EXISTS `user`;
+		
+CREATE TABLE `user` (
+  `id` INTEGER(20) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(20) NOT NULL DEFAULT 'NULL',
+  `username` VARCHAR(20) NOT NULL DEFAULT 'NULL',
+  `email` VARCHAR(50) NULL DEFAULT NULL,
+  `password` VARCHAR(20) NOT NULL DEFAULT 'NULL',
+  `birth` DATE NULL DEFAULT NULL,
+  `household_id` VARCHAR(20) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+-- ---
+-- Table 'dietary_restrictions'
+-- 
+-- ---
+
+DROP TABLE IF EXISTS `dietary_restrictions`;
+		
+CREATE TABLE `dietary_restrictions` (
+  `id` INTEGER(20) NOT NULL AUTO_INCREMENT,
+  `food` VARCHAR(20) NULL DEFAULT NULL,
+  `is_allergy` TINYINT(1) NULL DEFAULT NULL,
+  `user_id` INTEGER(20) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+-- ---
+-- Table 'item'
+-- 
+-- ---
+
+DROP TABLE IF EXISTS `item`;
+		
+CREATE TABLE `item` (
+  `id` INTEGER(20) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(20) NULL DEFAULT NULL,
+  `type` VARCHAR(20) NULL DEFAULT NULL,
+  `frozen` TINYINT NULL DEFAULT 0,
+  `quantity` INTEGER NULL DEFAULT 0,
+  `exp` TIMESTAMP NULL DEFAULT NULL,
+  `last` TIMESTAMP NULL DEFAULT NULL,
+  `img_id` VARCHAR(100) DEFAULT NULL,
+  `user_id` INTEGER(20) NULL DEFAULT NULL,
+  `household_id` INTEGER(20) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+-- ---
+-- Table 'recipe'
+-- 
+-- ---
+
+DROP TABLE IF EXISTS `recipe`;
+		
+CREATE TABLE `recipe` (
+  `id` INTEGER(20) NOT NULL AUTO_INCREMENT,
+  `instruction` MEDIUMTEXT NULL DEFAULT NULL,
+  `img_id` BLOB NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+-- ---
+-- Table 'recipeItem'
+-- 
+-- ---
+
+DROP TABLE IF EXISTS `recipeItem`;
+		
+CREATE TABLE `recipeItem` (
+  `id` INTEGER(20) NOT NULL AUTO_INCREMENT,
+  `itemName` VARCHAR(20) NULL DEFAULT NULL,
+  `quantity` INTEGER(10) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+-- ---
+-- Table 'image'
+-- 
+-- ---
+
+DROP TABLE IF EXISTS `image`;
+		
+CREATE TABLE `image` (
+  `id` INTEGER(20) NOT NULL AUTO_INCREMENT,
+  `img` BLOB NULL DEFAULT NULL,
+  `file_name` VARCHAR(50) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+-- ---
+-- Table 'shoppingList'
+-- 
+-- ---
+
+DROP TABLE IF EXISTS `shoppingList`;
+		
+CREATE TABLE `shoppingList` (
+  `id` INTEGER(20) NOT NULL AUTO_INCREMENT,
+  `household_id` VARCHAR(20) NULL DEFAULT NULL,
+  `user_id` INTEGER(20) NULL DEFAULT NULL,
+  `item_id` INTEGER NULL DEFAULT NULL,
+  `date` DATE NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+-- ---
+-- Table 'nutrition'
+-- 
+-- ---
+
+DROP TABLE IF EXISTS `nutrition`;
+		
+CREATE TABLE `nutrition` (
+  `id` INTEGER(20) NOT NULL AUTO_INCREMENT,
+  `item_id` INTEGER(20) NULL DEFAULT NULL,
+  `date` DATE NULL DEFAULT NULL,
+  `total_calories` INTEGER(20) NULL DEFAULT NULL,
+  `household_id` INTEGER(20) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+-- ---
+-- Foreign Keys 
+-- ---
+
+
+-- ---
+-- Table Properties
+-- ---
+
+-- ALTER TABLE `user` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+-- ALTER TABLE `dietary_restrictions` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+-- ALTER TABLE `item` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+-- ALTER TABLE `recipe` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+-- ALTER TABLE `recipeItem` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+-- ALTER TABLE `image` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+-- ALTER TABLE `shoppingList` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+-- ALTER TABLE `nutrition` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ---
+-- Test Data
+-- ---
+
+-- INSERT INTO `user` (`id`,`name`,`username`,`email`,`password`,`birth`,`household_id`) VALUES
+-- ('','','','','','','');
+-- INSERT INTO `dietary_restrictions` (`id`,`food`,`is_allergy`,`user_id`) VALUES
+-- ('','','','');
+-- INSERT INTO `item` (`item_id`,`name`,`type`,`frozen`,`quantity`,`exp`,`last`,`img_id`,`household_id `) VALUES
+-- ('','','','','','','','','');
+-- INSERT INTO `recipe` (`recipe_id`,`instruction`,`img_id`) VALUES
+-- ('','','');
+-- INSERT INTO `recipeItem` (`recipe_id`,`itemName`,`quantity`) VALUES
+-- ('','','');
+-- INSERT INTO `image` (`img_id`,`img`,`file_name`) VALUES
+-- ('','','');
+-- INSERT INTO `shoppingList` (`id`,`household_id`,`item_id`,`date `) VALUES
+-- ('','','','');
+-- INSERT INTO `nutrition` (`id`,`item_id`,`date`,`total_calories`,`household_id`) VALUES
+-- ('','','','','');

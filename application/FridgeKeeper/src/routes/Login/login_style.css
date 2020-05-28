@@ -1,0 +1,119 @@
+@import url('Https://fonts.googleapis.com/css2?family=Concert+One&display=swap%27');
+
+
+
+  h1,h2,h3,h4,h5,h6,span, label, a {
+    font-weight: 500;
+   font-family: 'Concert One', cursive;
+   text-align: center;
+  }
+
+
+.label-name {
+    font-weight: 500;
+    font-family: 'Concert One', cursive;
+}
+
+  .input-feedback {
+    color: rgb(235, 54, 54);
+   font-size: 12px;
+   margin-top: 2px;
+  }
+
+.login-form{
+   width: 100%;
+   max-width: 330px;
+   padding: 15px;
+   margin: auto;
+   height: 100%;
+
+  }
+
+.input:focus{
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+.titleLogin {
+    text-align: center;
+  }
+
+input.error:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+form.login-form {
+    padding: 0 0 16px;
+}
+.input-block {
+  display: block;
+  border-radius: 15px;
+  text-indent: 5px;
+  padding: .375rem .75rem;
+  font-weight: 400;
+  line-height: 1.5;
+  border: 1px solid #ced4da;
+  height: calc(1.5em + .75rem + 2px);
+  width: 100%;
+  color: #495057;
+}
+
+input:focus{
+    outline: none !important;
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+
+.btn {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 15px;
+    background-color: #225060;
+    border-color: #225060;
+    justify-content: center;
+    margin: auto;
+ }
+
+.add-button {
+    border-radius: 50px;
+    border-color: black;
+    font-style: bold;
+}
+
+h3.titleLogin {
+    padding-top: 10%;
+}
+hr {
+    margin: 15px;
+}
+
+.join {
+    color: #1979a9;
+}
+.forgot-password a{
+    color: #1979a9;
+    font-size: 12px;
+}
+
+.invalid {
+  color: red;
+  font-size: 14px;
+  padding-top: 20px;
+}
+
+.cancel-btn {
+    text-align: center;
+
+    color: #1979a9;
+    font-size: 12px;
+}
+
+.allergy {
+    border-radius: 50px;
+}
+
+a {
+    text-align: center;
+    color: #117a8b;
+}
+

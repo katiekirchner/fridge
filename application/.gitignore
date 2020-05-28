@@ -1,0 +1,4 @@
+# Dependency directories
+/application/node_modules/
+/application/backend/node_modules/
+node_modules/

@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
+
+nav a {
+    text-decoration: none;
+}
+
+.navbar-brand {
+    font-size: 25px;
+}
+
+.navbar {
+    border-radius: 0%;
+    background-color: #225060;
+    font-family: 'Concert One', cursive;
+    font-size: 18px;
+}
+
+.navbar-dark .navbar-toggler {
+    border-color: white;
+}
+
+nav a {
+    color: white;
+    margin: 0px 10px 0px 10px;
+    padding: 0px 5px 0px 5px;
+}
+
+nav a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.navbar-nav a:hover {
+    border-bottom: 3px solid white;
+}

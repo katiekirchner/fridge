@@ -1,0 +1,43 @@
+.content {
+    margin-left: 100px;
+    margin-right: 100px;
+    padding-top: 70px;
+    padding-bottom: 80px;
+    font-size: 60px;
+    position: relative;
+}
+
+.row_cont {
+    padding-top: 20px;
+    padding-right: 20px;
+}
+
+.about_info {
+    margin-bottom: 50px;
+    text-align: center;
+    font-size: 10px;
+    background-color: seashell;
+}
+
+.about_indiv_info {
+    text-align: center;
+    font-size: 30px;
+}
+
+.about_more_info {
+    text-align: center;
+    font-size: 15px;
+}
+
+.info {
+    content: "\e086";
+}
+
+.image {
+    display: block;
+    text-align: center;
+    width: 400px;
+    height: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}

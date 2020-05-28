@@ -1,0 +1,119 @@
+@import url('Https://fonts.googleapis.com/css2?family=Concert+One&display=swap%27');
+
+
+
+  h1,h2,h3,h4,h5,h6,span {
+    font-weight: 500;
+   font-family: 'Concert One', cursive;
+   text-align: center;
+  }
+
+.login-form{
+   width: 100%;
+   max-width: 330px;
+   padding: 15px;
+   margin: auto;
+   height: 100%;
+
+  }
+
+  .mb-4 {
+      margin: auto;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 320px;
+    border-radius: 15px;
+    background-color: #225060;
+    border-color: #225060;
+    justify-content: center;
+    margin: auto;
+  }
+
+.add-button {
+    border-radius: 50px;
+    border-color: black;
+    font-style: bold;
+}
+
+.form-control {
+    border-radius: 15px;
+}
+
+hr {
+    margin: 15px;
+}
+
+.join {
+    color: #1979a9;
+}
+.forgot-password a{
+    color: #1979a9;
+    font-size: 12px;
+}
+
+.error-msg {
+    color: red;
+    font-size: 14px;
+    padding-top: 20px;
+}
+
+.cancel-btn {
+    text-align: center;
+
+    color: #1979a9;
+    font-size: 12px;
+}
+
+.allergy {
+    border-radius: 50px;
+}
+
+a {
+    text-align: center;
+}
+
+.return_btn {
+    height: 20px;
+    width: 50px;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+#return-household {
+    height: 20px;
+    width: 35px;
+    padding-left: 0;
+
+}
+
+.title {
+    text-align: end;
+}
+
+.profile-pic {
+    height: 15%;
+    width: 40%;
+    margin-left: 28%;
+    margin-right: auto;
+}
+
+.form-group {
+    margin-top: 3%;
+}
+
+.custom-file-label {
+    font-family: 'Concert One', cursive;
+    text-align: left;
+}
+
+.label-name {
+    font-weight: 500;
+    font-family: 'Concert One', cursive;
+}
+
+.cancel-link {
+    color: #117a8b;
+} 
+
