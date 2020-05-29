@@ -1,5 +1,8 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './home_style.css'
+
+import img from "./grocerygood.png"
 
 import NavBar from '../../components/Navbar/Navbar';
 import back_btn from "../../components/icons/back_icon.png"
@@ -251,15 +254,15 @@ class AddItemsMan extends React.Component {
                             </Button>
                         </div>
                         <div class="addManually" id="final-add">
-                        {/* <Button variant="info" size="lg" block onClick={() => this.sendListToDB()}>
-                                    Add to Inventory
-                        </Button> */}
                             <Link to="/home">
                                   <Button variant="info" size="lg" block onClick={() => this.sendListToDB()}>
                                     Add to Inventory
                                 </Button>
                             </Link>
+
+                        
                         </div>
+
                             {(this.state.searchItems != null) ? (
                                 this.createModal()
                             ) : (
@@ -268,8 +271,11 @@ class AddItemsMan extends React.Component {
 
                     </div>
 
+                    <div class="gImage">
+                            <Image src={img} />
+                    </div>
                 </div>
-
+               
             </body>
         );
     }
