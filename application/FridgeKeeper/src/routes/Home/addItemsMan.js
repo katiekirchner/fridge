@@ -20,15 +20,16 @@ class AddItemsMan extends React.Component {
         index: 0,
         apiKey: "e2c2a767a760438e80f424b1f6ccf9fb",
         user_id: localStorage.getItem("user_id"),
-        item: {id: null, name: "", quantity: 0, exp: ""},
-        // user_id: 2, // < --- HARD CODED, need to replace with current user_id
+        item: {id: null, name: "", quantity: 0, exp: "", img_id: ""},
         num: 0,
         list: [],
-        addItems: []
+        addItems: [],
+        testItem: 0
     }
 
     async sendListToDB() {
-        console.log(this.state.items)
+        console.log("List: ", this.state.list);
+
       const response = await fetch('/backend/item',
       {
           method: 'PUT',
@@ -50,7 +51,8 @@ class AddItemsMan extends React.Component {
 
 
     async searchItem() {
-        const url = "https://api.spoonacular.com/food/products/search?apiKey=" + this.state.apiKey + "&query=" + this.state.search;
+        const url = "https://api.spoonacular.com/food/products/search?apiKey=" 
+                        + this.state.apiKey + "&query=" + this.state.search + "&number=50";
         const response = await fetch(url);
         const data = await response.json();
 
@@ -63,10 +65,10 @@ class AddItemsMan extends React.Component {
 
     handleKeyPress = (event) => {
         if(event.key === 'Enter'){
-            console.log(this.state.search)
+    
             this.searchItem();
             this.setState({modalShow: true})
-            this.state.list.push({id: null, name: this.state.search, quantity: 0, exp: ""})
+            // this.state.list.push({id: null, name: this.state.search, quantity: 0, exp: ""})
         }
     }
 
@@ -79,17 +81,25 @@ class AddItemsMan extends React.Component {
         console.log("index: ", this.state.index)
     }
 
+    selectCarItem() {
+        console.log("hereee: ", this.state.testItem);
+        console.log("iteemmm: ", this.state.searchItems[this.state.testItem]);
+
+        var itemAdded = this.state.searchItems[this.state.testItem];
 
 
-    createModal() {
-        return (
-            <MyVerticallyCenteredModal
-                searchItems={this.state.searchItems}
-                show={this.state.modalShow}
-                onHide={() => {this.setState({modalShow: false})}}
-            />
-        )
+        console.log("var: ", itemAdded);
+        console.log("quant: ", this.state.quantity);
+        // console.log("date: ", this.state.testItem);
+
+        this.state.list.push({id: null, name: this.state.search, quantity: 0, exp: "", img_id: itemAdded.image});
+
+        this.setState({modalShow: false});
+
     }
+
+  
+
 
 
 
@@ -118,12 +128,16 @@ class AddItemsMan extends React.Component {
                         onChange={e => this.state.items[index].quantity = e.target.value}
                         style={{margin:'10px 5px 5px 5px', maxWidth:'100px'}}>
                         <Form.Control as="select" id="addItems-form">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>Enter quantity</option>
+                            <option value = "1">1</option>
+                            <option value = "2">2</option>
+                            <option value = "3">3</option>
+                            <option value = "4">4</option>
+                            <option value = "5">5</option>
+                            <option value = "6">6</option>
+                            <option value = "7">7</option>
+                            <option value = "8">8</option>
+                            <option value = "9">9</option>
+                            <option value = "10">10</option>
                         </Form.Control>
                     </Form.Group>
                     <Form.Group as={Col} sm="5" md="4"
@@ -141,6 +155,62 @@ class AddItemsMan extends React.Component {
             </Form>
         );
     }
+
+
+
+    createModal(testItem) {  
+        const index = testItem
+
+        const handleSelect = (selectedIndex, e) => {
+            this.setState({testItem: selectedIndex});
+
+            console.log("here: ", selectedIndex);
+        };
+
+ 
+        return (
+            <Modal
+                searchItems={this.state.searchItems}
+                show={this.state.modalShow}
+                onHide={() => {this.setState({modalShow: false})}}
+                size="lg"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title id="contained-modal-title-vcenter"
+                        style={{fontFamily:'Concert One, cursive', fontSize:'25px', margin:'auto', paddingLeft:'40px'}}>
+                        Add Item
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body style={{fontFamily:'Concert One, cursive', fontSize:'20px'}}>
+                    <Carousel slide={false} interval={false} indicators={false} activeIndex={index} onSelect={handleSelect} >
+                        {this.state.searchItems.map((item, index) => {
+                            return (
+                            !item ? (
+                                <Carousel.Item/>
+                            ) : (
+                                <Carousel.Item id = "card" key={index}>
+                                    <Card>
+                                        <Card.Img variant="top" src={item.image} style={{maxWidth:'auto', height:'300px', objectFit:'contain'}}/>
+                                        <Card.Body>
+                                            <Card.Title>{item.title}</Card.Title>
+                                        </Card.Body>
+                                    </Card>
+                                </Carousel.Item>
+    
+                            ))
+                        })}
+                    </Carousel>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="info" size="lg" onClick={() => this.selectCarItem()}> Choose </Button>
+                </Modal.Footer>
+            </Modal>
+            );
+        
+    }
+
 
     render() {
         if(this.state.initial) {
@@ -168,6 +238,8 @@ class AddItemsMan extends React.Component {
                         <div class="title-add" id="man">
                             Add Items
                         </div>
+                        <p> Press enter to browse item options </p>
+                        <br></br>
                         <div>
                             {this.state.addItems.map((item, index)=>{
                                 return item
@@ -179,6 +251,9 @@ class AddItemsMan extends React.Component {
                             </Button>
                         </div>
                         <div class="addManually" id="final-add">
+                        {/* <Button variant="info" size="lg" block onClick={() => this.sendListToDB()}>
+                                    Add to Inventory
+                        </Button> */}
                             <Link to="/home">
                                   <Button variant="info" size="lg" block onClick={() => this.sendListToDB()}>
                                     Add to Inventory
@@ -200,53 +275,65 @@ class AddItemsMan extends React.Component {
     }
 }
 
-function MyVerticallyCenteredModal(props) {
+// function MyVerticallyCenteredModal(props) {
 
-  let index = 0;
-  const handleSelect = (e) => {
-    index++;
-    console.log("Index!!: ", index);
-  };
+//     function test(){
+//         console.log("Index: ", index);
+//         console.log("Props: ", props);
 
-    return (
-        <Modal
-            show={props.show}
-            onHide={props.onHide}
-            size="lg"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-        >
-            <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter"
-                    style={{fontFamily:'Concert One, cursive', fontSize:'25px', margin:'auto', paddingLeft:'40px'}}>
-                    Add Item
-                </Modal.Title>
-            </Modal.Header>
-            <Modal.Body style={{fontFamily:'Concert One, cursive', fontSize:'20px'}}>
-                <Carousel slide={false} interval={false} indicators={false} onClick={handleSelect}>
-                    {props.searchItems.map((item, index) => {
-                        return (
-                        !item ? (
-                            <Carousel.Item/>
-                        ) : (
-                            <Carousel.Item>
-                                <Card>
-                                    <Card.Img variant="top" src={item.image} style={{maxWidth:'auto', height:'300px', objectFit:'contain'}}/>
-                                    <Card.Body>
-                                        <Card.Title>{item.title}</Card.Title>
-                                    </Card.Body>
-                                </Card>
-                            </Carousel.Item>
+//         const recipeName = document.getElementById("card");
+//         console.log("Test get: ", recipeName);
 
-                        ))
-                    })}
-                </Carousel>
-            </Modal.Body>
-            <Modal.Footer>
-                <Button variant="info" size="lg" onClick={props.onHide}> Choose </Button>
-            </Modal.Footer>
-        </Modal>
-    );
-}
+//     }
+
+
+
+//   let index = 0;
+//   const handleSelect = (e) => {
+//     index++;
+//     console.log("Index!!: ", index);
+//   };
+
+//     return (
+//         <Modal
+//             show={props.show}
+//             onHide={props.onHide}
+//             size="lg"
+//             aria-labelledby="contained-modal-title-vcenter"
+//             centered
+//         >
+//             <Modal.Header closeButton>
+//                 <Modal.Title id="contained-modal-title-vcenter"
+//                     style={{fontFamily:'Concert One, cursive', fontSize:'25px', margin:'auto', paddingLeft:'40px'}}>
+//                     Add Item
+//                 </Modal.Title>
+//             </Modal.Header>
+//             <Modal.Body style={{fontFamily:'Concert One, cursive', fontSize:'20px'}}>
+//                 <Carousel slide={false} interval={false} indicators={false} >
+//                     {props.searchItems.map((item, index) => {
+//                         return (
+//                         !item ? (
+//                             <Carousel.Item/>
+//                         ) : (
+//                             <Carousel.Item>
+//                                 <Card id = "card">
+//                                     <Card.Img variant="top" src={item.image} style={{maxWidth:'auto', height:'300px', objectFit:'contain'}}/>
+//                                     <Card.Body>
+//                                         <Card.Title>{item.title}</Card.Title>
+//                                     </Card.Body>
+//                                 </Card>
+//                             </Carousel.Item>
+
+//                         ))
+//                     })}
+//                 </Carousel>
+//             </Modal.Body>
+//             <Modal.Footer>
+//                 <Button variant="info" size="lg" onClick={() => test()}> Choose </Button>
+//             </Modal.Footer>
+//         </Modal>
+//     );
+// }
+// onClick={props.onHide}
 
 export default AddItemsMan;
