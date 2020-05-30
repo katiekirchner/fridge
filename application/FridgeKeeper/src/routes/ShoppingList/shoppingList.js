@@ -17,7 +17,33 @@ class ShoppingList extends React.Component {
 
 
     async componentDidMount() {
-        this.getList()
+        var user_id = this.state.user_id;
+
+
+        const response = await fetch('backend/shoppingList?user_id=' + user_id,
+        {
+            method: 'GET'
+        });
+        
+
+        const body = await response.json();
+        if(response.status !== 200) {
+            throw Error(body.message)
+        }
+        body.sort((a, b) => {
+                if(a.name < b.name) { return -1 }
+                if(a.name > b.name) { return 1 }
+                return 0}
+            )
+        body.map((item, index)=>{
+            if (item.quantity_needed > 0) {
+                this.state.list_items.push(item);
+            }
+        });
+
+        this.setState({loading:false})
+        
+        // this.getList()
         // this.addToList()
         console.log(this.state.user_id)
 
@@ -33,43 +59,23 @@ class ShoppingList extends React.Component {
         const response = await fetch('backend/shoppingList?user_id=' + user_id,
         {
             method: 'GET'
-        })
-        .then((response)=>response.json())
-        .then((responseJson)=>
-        {
+        });
+        
 
-            responseJson.sort((a, b) => {
+        const body = await response.json();
+        if(response.status !== 200) {
+            throw Error(body.message)
+        }
+        body.sort((a, b) => {
                 if(a.name < b.name) { return -1 }
                 if(a.name > b.name) { return 1 }
                 return 0}
             )
-            responseJson.map((item, index)=>{
-                if (item.quantity_needed > 0) {
-                    this.state.list_items.push(item);
-                }
-            });
-
-
-        })
-        // .then(response => response.text())
-        // .then(response => console.log(rs))
-
-        // const body = await response.json();
-        // .then(res => res.text())
-        // .then(rs => console.log(rs))
-        // if(response.status !== 200) {
-        //     throw Error(body.message)
-        // }
-        // body.sort((a, b) => {
-        //         if(a.name < b.name) { return -1 }
-        //         if(a.name > b.name) { return 1 }
-        //         return 0}
-        //     )
-        // body.map((item, index)=>{
-        //     if (item.quantity_needed > 0) {
-        //         this.state.list_items.push(item);
-        //     }
-        // });
+        body.map((item, index)=>{
+            if (item.quantity_needed > 0) {
+                this.state.list_items.push(item);
+            }
+        });
 
         this.setState({loading:false})
     }
