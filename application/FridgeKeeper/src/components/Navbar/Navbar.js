@@ -1,9 +1,17 @@
 import React from 'react'
-import {Navbar, Nav, NavItem} from "react-bootstrap";
+import {Navbar, Nav, NavItem, Button} from "react-bootstrap";
 import {NavLink} from 'react-router-dom';
 import "./navbar_style.css";
+import {Link} from 'react-router-dom'
+
 
 class NavBar extends React.Component {
+
+    logout() {
+        localStorage.removeItem("user_id")
+    }
+
+
     render() {
         const activeStyle = {
             'border-bottom': '3px solid white'
@@ -29,11 +37,12 @@ class NavBar extends React.Component {
                                     <NavLink activeStyle={activeStyle} to="/recipes"> Recipes </NavLink>
                                 </NavItem>
                                 {/* <NavItem>
-                                    <NavLink activeStyle={activeStyle} to="/about"> About </NavLink>
+                                    <NavLink activeStyle={activeStyle} to="/my_account"> Profile </NavLink>
                                 </NavItem> */}
                                 <NavItem>
-                                    <NavLink activeStyle={activeStyle} to="/profile"> Profile </NavLink>
+                                    <NavLink activeStyle={activeStyle} to="/Login"> Log Out </NavLink>
                                 </NavItem>
+                        
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>

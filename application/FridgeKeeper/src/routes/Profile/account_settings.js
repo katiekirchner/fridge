@@ -11,25 +11,29 @@ import img_user from "./image/user.png";
 
 
 class Account extends React.Component {
+    logout() {
+        localStorage.removeItem("user_id")
+    }
+    
     render() {
         return (
             <body>
             <NavBar></NavBar>
             <div class={"account_settings"}>
-                <Link to="/profile">
+                <Link to="/home">
                 <div class={"return_btn"}>
                     <Image src={back_btn} roundedCircle fluid/>
                 </div>
                 </Link>
-                <div className={"profile_img"}>
+                {/* <div className={"profile_img"}>
                     <Image src={img_user} roundedCircle fluid/>
-                </div>
-                <h5 className={"profile_name"}>John Smith</h5>
-                <Link to={"/my_account"}>
+                </div> */}
+                <h1 className={"profile_name"}>John Smith</h1>
+                {/* <Link to={"/my_account"}>
                     <div class={"link"}>
                         <p>Change profile picture</p>
                     </div>
-                </Link>
+                </Link> */}
             </div>
 
             <div className={"form_settings"}>
@@ -41,7 +45,7 @@ class Account extends React.Component {
                                 required
                                 type="text"
                                 placeholder="First name"
-                                defaultValue="John"
+                                defaultValue=""
                             />
                         </Form.Group>
                         <Form.Group as={Col} md="4">
@@ -50,7 +54,7 @@ class Account extends React.Component {
                                 required
                                 type="text"
                                 placeholder="Last name"
-                                defaultValue="Smith"
+                                defaultValue=""
                             />
                         </Form.Group>
                         <Form.Group as={Col} md="4">
@@ -74,7 +78,7 @@ class Account extends React.Component {
                             <Form.Control type="text" placeholder="jsmith@gmail.com" required />
                         </Form.Group>
                     </Form.Row>
-                    <Form.Row>
+                    {/* <Form.Row>
                         <Form.Group as={Col} md="6" >
                             <Form.Label>Password</Form.Label>
                             <Form.Control type="text" placeholder="***************" required />
@@ -84,10 +88,16 @@ class Account extends React.Component {
                         <div class={"link"}>
                             <p>Change password</p>
                         </div>
-                    </Link>
+                    </Link> */}
                     <Button variant="info" size="lg" block>
                         Save Changes
                     </Button>
+
+                    <Link to="">
+                    <Button variant="secondary" size="lg" onClick={this.logout()} block>
+                        Log Out
+                    </Button>
+                </Link>
                 </Form>
             </div>
             </body>

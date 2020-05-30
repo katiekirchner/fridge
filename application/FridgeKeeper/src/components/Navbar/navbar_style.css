@@ -4,6 +4,15 @@ nav a {
     text-decoration: none;
 }
 
+.Lbutton{
+    background-color: #225060;
+    border:0;
+    color: white;
+
+    /* top: 0;
+    margin: 2%; */
+}
+
 .navbar-brand {
     font-size: 25px;
 }

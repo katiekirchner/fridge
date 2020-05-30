@@ -63,10 +63,10 @@ class SignUp extends React.Component {
                     <img class="rounded-circle z-depth-2 img profile-pic" alt="80x80" src="https://miro.medium.com/max/560/1*MccriYX-ciBniUzRKAUsAw.png"
                     data-holder-rendered="true"/>
                   </div>
-                  <div className="custom-file">
+                  {/* <div className="custom-file">
                         <input type="file" className="custom-file-input" />
                             <label className="custom-file-label" htmlFor="customFileLang">Add profile picture</label>
-                    </div>
+                    </div> */}
           
           <div className="form-group">
           <label htmlFor="name" class="label-name">Name</label>

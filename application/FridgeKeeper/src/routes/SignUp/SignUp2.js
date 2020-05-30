@@ -128,12 +128,12 @@ class SignUp2 extends React.Component {
                                 </Form.Control>
                             </Form.Group>
 
-                            <div className="form-group">
+                   {/* <div className="form-group">
                                 <label>Household</label>
                                 <Link to="/addHousehold">
                                     <button type="submit" className="add-button"> + </button>
                                 </Link>
-                            </div>
+                            </div>          */}
 
                             {!this.state.fail ? (
                                 <p/>

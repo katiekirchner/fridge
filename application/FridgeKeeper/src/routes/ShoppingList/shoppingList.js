@@ -11,23 +11,26 @@ import { AlertHeading } from 'react-bootstrap/Alert';
 class ShoppingList extends React.Component {
     state = {
         loading: true,
-        household_id: 0,
+        user_id: localStorage.getItem("user_id"),
         list_items: [],
     };
 
 
     async componentDidMount() {
-        //this.getList()
+        this.getList()
         // this.addToList()
+        console.log(this.state.user_id)
+
 
         console.log(this.state.list_items)
     }
 
 
     async getList() {
-        var household_id = this.state.household_id;
+        var user_id = this.state.user_id;
 
-        const response = await fetch('backend/shoppingList?household_id=' + household_id,
+
+        const response = await fetch('backend/shoppingList?user_id=' + user_id,
         {
             method: 'GET'
         });
@@ -49,24 +52,6 @@ class ShoppingList extends React.Component {
 
         this.setState({loading:false})
     }
-
-
-  // async addToList(list_item) {
-  //   const response = await fetch('backend/shoppingList',
-  //   {
-  //       method: 'PUT',
-  //       headers: {
-  //           'Content-Type': 'application/json'
-  //       },
-  //       body: JSON.stringify({
-  //           household_id: this.state.household_id,
-  //           item_id: list_item
-  //       })
-  //   })
-  //   .then(res => res.text())
-  //   .then(rs => console.log(rs))
-  //
-  // }
 
 
 
@@ -125,7 +110,7 @@ class ShoppingList extends React.Component {
                                                         <div class="num"> {index+1} </div>
                                                     </Col>
                                                     <Col xs={10} s={8} md={6} lg={4} xl={3}>
-                                                        <Image src={item.img_id} rounded fluid/>
+                                                        <Image src={item.image} rounded fluid/>
                                                     </Col>
                                                     <Col xs={10} s={8} lg={6} style={{maxWidth:'500px'}}>
                                                         <Row id="details-box">

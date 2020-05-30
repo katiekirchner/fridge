@@ -28,7 +28,7 @@ class Profile extends React.Component {
                     <p>Allergies: None | Dietary Needs: None</p>
                 </div>
             </div>
-            <div className={"card-style"}>
+            {/* <div className={"card-style"}>
                 <Card>
                     <Card.Body>
                         <Card.Title>Household</Card.Title>
@@ -50,15 +50,15 @@ class Profile extends React.Component {
                         </Card.Text>
                     </Card.Body>
                 </Card>
-            </div>
+            </div> */}
 
             <div class={"profile_settings"}>
                 <Link to="/my_account">
                     <Button variant="info" size="lg" block>
-                        My Account
+                        Edit Account Info
                     </Button>
                 </Link>
-                <Link to="/my_household">
+                {/* <Link to="/my_household">
                     <Button variant="info" size="lg" block>
                         My Household
                     </Button>
@@ -67,7 +67,7 @@ class Profile extends React.Component {
                     <Button variant="info" size="lg" block>
                         Notification Settings
                     </Button>
-                </Link>
+                </Link> */}
                 <Link to="">
                     <Button variant="secondary" size="lg" onClick={this.logout()} block>
                         Log Out
