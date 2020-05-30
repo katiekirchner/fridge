@@ -21,7 +21,7 @@ class AddItemsMan extends React.Component {
         searchItems: [],
         items: [],
         index: 0,
-        apiKey: "e2c2a767a760438e80f424b1f6ccf9fb",
+        apiKey: "21d6feec062a486bad9afe2bbb314ca7",
         user_id: localStorage.getItem("user_id"),
         item: {id: null, name: "", quantity: 0, exp: "", img_id: ""},
         num: 0,
@@ -41,7 +41,7 @@ class AddItemsMan extends React.Component {
           },
           body:JSON.stringify({
               user_id: this.state.user_id,
-              list: this.state.items
+              list: this.state.list
           })
       })
       .then(res => res.text())
@@ -50,8 +50,6 @@ class AddItemsMan extends React.Component {
       console.log(response);
 
     }
-
-
 
     async searchItem() {
         const url = "https://api.spoonacular.com/food/products/search?apiKey=" 
@@ -62,8 +60,9 @@ class AddItemsMan extends React.Component {
         console.log("heree" , data.products[3])
 
         this.setState({searchItems: data["products"]});
-        console.log(this.state.searchItems)
+        // console.log(this.state.searchItems)
     }
+
 
 
     handleKeyPress = (event) => {
@@ -71,7 +70,6 @@ class AddItemsMan extends React.Component {
     
             this.searchItem();
             this.setState({modalShow: true})
-            // this.state.list.push({id: null, name: this.state.search, quantity: 0, exp: ""})
         }
     }
 
@@ -79,87 +77,22 @@ class AddItemsMan extends React.Component {
         this.setState({search: event.target.value});
     }
 
-    selectItem(index) {
-        this.setState({modalShow: false, index: index})
-        console.log("index: ", this.state.index)
-    }
+
 
     selectCarItem() {
-        console.log("hereee: ", this.state.testItem);
-        console.log("iteemmm: ", this.state.searchItems[this.state.testItem]);
 
         var itemAdded = this.state.searchItems[this.state.testItem];
+        var listItem = this.state.list.findIndex(x => x.name === this.state.search)
 
 
-        console.log("var: ", itemAdded);
-        console.log("quant: ", this.state.quantity);
-        // console.log("date: ", this.state.testItem);
-
-        this.state.list.push({id: null, name: this.state.search, quantity: 0, exp: "", img_id: itemAdded.image});
+        this.state.list[listItem].img_id =itemAdded.image;
+        
+        
+        // push({id: null, name: this.state.search, quantity: 1, exp: null, img_id: itemAdded.image});
 
         this.setState({modalShow: false});
 
     }
-
-  
-
-
-
-
-    addForm(index) {
-        this.setState({num: index+1})
-        this.state.items.push({name: "", quantity: "1", exp: null, img_id: ""})
-        this.state.addItems.push(
-            <Form>
-                <Form.Row style={{margin:'0px'}}>
-                    <Form.Group as={Col} sm="5" md="4"
-                        style={{margin:'10px 5px 5px 5px', maxWidth:'500px'}}>
-                        <Form.Control
-                            required
-                            type="text"
-                            placeholder="Enter name of item"
-                            defaultValue=""
-                            id="addItems-form"
-                            onChange={e => { this.setState({search: e.target.value});
-                                this.state.items[index].name = e.target.value
-
-                            }}
-                            onKeyDown={this.handleKeyPress}
-                        />
-                    </Form.Group>
-                    <Form.Group as={Col} sm="2" md="1"
-                        onChange={e => this.state.items[index].quantity = e.target.value}
-                        style={{margin:'10px 5px 5px 5px', maxWidth:'100px'}}>
-                        <Form.Control as="select" id="addItems-form">
-                            <option value = "1">1</option>
-                            <option value = "2">2</option>
-                            <option value = "3">3</option>
-                            <option value = "4">4</option>
-                            <option value = "5">5</option>
-                            <option value = "6">6</option>
-                            <option value = "7">7</option>
-                            <option value = "8">8</option>
-                            <option value = "9">9</option>
-                            <option value = "10">10</option>
-                        </Form.Control>
-                    </Form.Group>
-                    <Form.Group as={Col} sm="5" md="4"
-                        onChange={e => this.state.items[index].exp = e.target.value}
-                        style={{margin:'10px 5px 5px 5px', maxWidth:'330px', minWidth:'300px'}}>
-                        <InputGroup>
-                            <InputGroup.Prepend>
-                                <InputGroup.Text>Exp</InputGroup.Text>
-                            </InputGroup.Prepend>
-                            <Form.Control type="date" id="addItems-form"></Form.Control>
-                        </InputGroup>
-
-                    </Form.Group>
-                </Form.Row>
-            </Form>
-        );
-    }
-
-
 
     createModal(testItem) {  
         const index = testItem
@@ -186,6 +119,7 @@ class AddItemsMan extends React.Component {
                         Add Item
                     </Modal.Title>
                 </Modal.Header>
+                
                 <Modal.Body style={{fontFamily:'Concert One, cursive', fontSize:'20px'}}>
                     <Carousel slide={false} interval={false} indicators={false} activeIndex={index} onSelect={handleSelect} >
                         {this.state.searchItems.map((item, index) => {
@@ -213,6 +147,75 @@ class AddItemsMan extends React.Component {
             );
         
     }
+
+
+    addForm(index) {
+        this.setState({num: index+1})
+        console.log("Num: ", this.state.num);
+        this.state.list.push({name: "", quantity: 1, exp: null, img_id: ""})
+        console.log("List: ", this.state.list)
+        this.state.addItems.push(
+            <Form>
+                <Form.Row style={{margin:'0px'}}>
+                    <Form.Group as={Col} sm="5" md="4"
+                        style={{margin:'10px 5px 5px 5px', maxWidth:'500px'}}>
+                        <Form.Control
+                            required
+                            type="text"
+                            placeholder="Enter name of item"
+                            defaultValue=""
+                            id="addItems-form"
+                            onChange={e => { this.setState({search: e.target.value});
+                                this.state.list[index].name = e.target.value
+
+                            }}
+                            onKeyDown={this.handleKeyPress}
+                        />
+                    </Form.Group>
+                    <Form.Group as={Col} sm="2" md="1"
+                        onChange={e => 
+                            {this.state.list[(e.target.id == '') ? 0 :  e.target.id].quantity = e.target.value}
+
+                        }
+
+                        // onChange={e => this.state.items[e.target.id].quantity = e.target.value}
+                        style={{margin:'10px 5px 5px 5px', maxWidth:'100px'}}>
+                        <Form.Control as="select" id={this.state.num}>
+                            <option value = "1">1</option>
+                            <option value = "2">2</option>
+                            <option value = "3">3</option>
+                            <option value = "4">4</option>
+                            <option value = "5">5</option>
+                            <option value = "6">6</option>
+                            <option value = "7">7</option>
+                            <option value = "8">8</option>
+                            <option value = "9">9</option>
+                            <option value = "10">10</option>
+                        </Form.Control>
+                    </Form.Group>
+                    <Form.Group   as={Col} sm="5" md="4"
+                           onChange={e => 
+                            {this.state.list[(e.target.id == '') ? 0 :  e.target.id].exp = e.target.value}
+
+                        }
+                        // onChange={e => this.state.items[e.target.id].exp = e.target.value}
+                        style={{margin:'10px 5px 5px 5px', maxWidth:'330px', minWidth:'300px'}}>
+                        <InputGroup>
+                            <InputGroup.Prepend>
+                                <InputGroup.Text>Exp</InputGroup.Text>
+                            </InputGroup.Prepend>
+                            <Form.Control type="date" id={this.state.num}></Form.Control>
+                        </InputGroup>
+
+                    </Form.Group>
+                </Form.Row>
+            </Form>
+        );
+    }
+
+
+
+
 
 
     render() {
@@ -254,6 +257,9 @@ class AddItemsMan extends React.Component {
                             </Button>
                         </div>
                         <div class="addManually" id="final-add">
+                                {/* <Button variant="info" size="lg" block onClick={() => this.sendListToDB()}>
+                                    Add to Inventory
+                                </Button> */}
                             <Link to="/home">
                                   <Button variant="info" size="lg" block onClick={() => this.sendListToDB()}>
                                     Add to Inventory

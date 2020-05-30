@@ -187,8 +187,7 @@ class Home extends React.Component {
                                                         
                                                         <Card.Body>
                                                             <Card.Title>{item.name}</Card.Title>
-                                                            <Card.Text> Quantity:  
-                                                                <i class="fa fa-minus"/> {item.quantity} <i class="fa fa-plus"/> </Card.Text>
+                                                            <Card.Text> Quantity:  {item.quantity} </Card.Text>
                                                             {/*<Card.Text> Exp. Date: {expirationDate} </Card.Text>*/}
                                                         </Card.Body>
                                                     </Card>

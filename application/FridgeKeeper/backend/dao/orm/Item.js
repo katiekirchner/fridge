@@ -12,9 +12,9 @@ module.exports = class{
         this.frozen = frozen
         this.quantity = quantity
         this.exp = exp
-        this.last = last,
-        this.img_id = img_id,
-        this.user_id = user_id,
+        this.last = last
+        this.img_id = img_id
+        this.user_id = user_id
         this.household_id = household_id
 
     }
@@ -65,7 +65,7 @@ module.exports = class{
 
     static showItems(user_id, res){
 
-        const sql = `select * from ${ITEM_TABLE} where user_id = ?`
+        const sql = `select * from ${ITEM_TABLE} where user_id = ? and quantity > 0`
 
         queryDB(sql, [user_id], function (err, results) {
 
