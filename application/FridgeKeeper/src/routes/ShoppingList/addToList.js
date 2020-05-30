@@ -208,7 +208,7 @@ class AddToList extends React.Component {
                 <NavBar />
                 <div>
                     <div>
-                        <Link to="/home">
+                        <Link to="/shopping-list">
                         <div class={"return_btn"}>
                             <Image src={back_btn} roundedCircle fluid/>
                         </div>
