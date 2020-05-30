@@ -7,11 +7,10 @@ import {Image} from "react-bootstrap";
 import lemons from "./lemons.jpg"
 import "./login_style.css";
 
-const lems = require ("./lemons.jpg")
 
 var sectionStyle = {
     width: "100%",
-    height: "1500px",
+    height: "1000px",
     resizeMode: 'repeat',
     backgroundImage: `url(${lemons})`
 };
