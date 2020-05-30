@@ -2,8 +2,20 @@ import React from "react";
 import { Link } from 'react-router-dom'
 import { Formik, ErrorMessage } from "formik"
 import * as Yup from "yup"
+import {Image} from "react-bootstrap";
 
+import lemons from "./lemons.jpg"
 import "./login_style.css";
+
+const lems = require ("./lemons.jpg")
+
+var sectionStyle = {
+    width: "100%",
+    height: "1500px",
+    resizeMode: 'repeat',
+    backgroundImage: `url(${lemons})`
+};
+
 
 class Login extends React.Component {
     state = {
@@ -43,11 +55,11 @@ class Login extends React.Component {
         console.log(this.state.login)
     }
 
-    render() {
-
+    createForm(){
         const{history} = this.props;
-        return (
-            <Formik
+
+        return(
+                <Formik
                 initialValues={{
                     username: '',
                     password: ''
@@ -129,6 +141,22 @@ class Login extends React.Component {
                     </form>
                 )}
             />
+        )
+    }
+
+
+
+    render() {
+   
+
+        return (
+            <div style={ sectionStyle } imageStyle={{resizeMode: 'repeat'}}>
+
+                <div class="formhold">
+                    {this.createForm()}
+                </div>
+             </div>
+
         )
 
     }
