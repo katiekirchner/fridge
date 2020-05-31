@@ -19,29 +19,56 @@ class ShoppingList extends React.Component {
     async componentDidMount() {
         var user_id = this.state.user_id;
 
-
-        const response = await fetch('backend/shoppingList?user_id=' + user_id,
+        fetch('backend/shoppingList?user_id=' + user_id,
         {
             method: 'GET'
         })
+        .then(response => this.sort(response))
+        .then(response => console.log(response))
+
         
 
-        const body = await response.json();
-        if(response.status !== 200 ) {
-            throw Error(body.message)
-        } else if (body.length > 0){
-            body.sort((a, b) => {
-                    if(a.name < b.name) { return -1 }
-                    if(a.name > b.name) { return 1 }
-                    return 0}
-                )
-            body.map((item, index)=>{
-                if (item.quantity_needed > 0) {
-                    this.state.list_items.push(item);
-                }
-            });
-        }
+        // const body = await response.json();
+        // if(response.status !== 200 ) {
+        //     throw Error(body.message)
+        // } else if (body.length > 0){
+        //     body.sort((a, b) => {
+        //             if(a.name < b.name) { return -1 }
+        //             if(a.name > b.name) { return 1 }
+        //             return 0}
+        //         )
+        //     body.map((item, index)=>{
+        //         if (item.quantity_needed > 0) {
+        //             this.state.list_items.push(item);
+        //         }
+        //     });
+        // }
 
+
+
+        // const response = await fetch('backend/shoppingList?user_id=' + user_id,
+        // {
+        //     method: 'GET'
+        // })
+        
+
+        // const body = await response.json();
+        // if(response.status !== 200 ) {
+        //     throw Error(body.message)
+        // } else if (body.length > 0){
+        //     body.sort((a, b) => {
+        //             if(a.name < b.name) { return -1 }
+        //             if(a.name > b.name) { return 1 }
+        //             return 0}
+        //         )
+        //     body.map((item, index)=>{
+        //         if (item.quantity_needed > 0) {
+        //             this.state.list_items.push(item);
+        //         }
+        //     });
+        // }
+
+        
         this.setState({loading:false})
 
         // this.getList()
@@ -51,6 +78,21 @@ class ShoppingList extends React.Component {
 
         console.log(this.state.list_items)
     }
+
+    sort(body){
+
+        body.sort((a, b) => {
+            if(a.name < b.name) { return -1 }
+            if(a.name > b.name) { return 1 }
+            return 0}
+            )
+        body.map((item, index)=>{
+            if (item.quantity_needed > 0) {
+                this.state.list_items.push(item);
+            }
+        });
+    }
+
 
 
     async getList() {
