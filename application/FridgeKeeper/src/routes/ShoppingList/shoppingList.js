@@ -16,44 +16,45 @@ class ShoppingList extends React.Component {
     };
 
 
-    sortResp(body){
+    sortResp(response){
 
-        body.map((item, index)=>{
+        response.sort((a, b) => {
+            if(a.name < b.name) { return -1 }
+            if(a.name > b.name) { return 1 }
+            return 0}
+            )
+            response.map((item, index)=>{
             if (item.quantity_needed > 0) {
                 this.state.list_items.push(item);
             }
         });
     }
 
-
     async componentDidMount() {
         var user_id = this.state.user_id;
 
-        fetch('backend/shoppingList?user_id=' + user_id,
+        const response = await fetch('backend/shoppingList?user_id=' + user_id,
         {
             method: 'GET'
         })
-        .then(response => console.log(response))
-        .then(response => this.state.list_items.push(response.body))
-
-
+        .catch(err => console.log(err));
         
 
-        // const body = await response.json();
-        // if(response.status !== 200 ) {
-        //     throw Error(body.message)
-        // } else if (body.length > 0){
-        //     body.sort((a, b) => {
-        //             if(a.name < b.name) { return -1 }
-        //             if(a.name > b.name) { return 1 }
-        //             return 0}
-        //         )
-        //     body.map((item, index)=>{
-        //         if (item.quantity_needed > 0) {
-        //             this.state.list_items.push(item);
-        //         }
-        //     });
-        // }
+        const body = await response.json();
+        if(response.status !== 200 ) {
+            throw Error(body.message)
+        } else if (body.length > 0){
+            body.sort((a, b) => {
+                    if(a.name < b.name) { return -1 }
+                    if(a.name > b.name) { return 1 }
+                    return 0}
+                )
+            body.map((item, index)=>{
+                if (item.quantity_needed > 0) {
+                    this.state.list_items.push(item);
+                }
+            });
+        }
 
 
 
@@ -89,9 +90,6 @@ class ShoppingList extends React.Component {
 
         console.log(this.state.list_items)
     }
-
-
-
 
 
     async getList() {
