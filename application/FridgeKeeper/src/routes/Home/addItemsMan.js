@@ -2,7 +2,7 @@ import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './home_style.css'
 
-import img from "./grocerygood.png"
+import img from "./bag.png"
 
 import NavBar from '../../components/Navbar/Navbar';
 import back_btn from "../../components/icons/back_icon.png"

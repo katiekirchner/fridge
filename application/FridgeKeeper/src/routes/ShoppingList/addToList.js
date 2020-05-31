@@ -6,7 +6,7 @@ import back_btn from "../../components/icons/back_icon.png"
 import {Image, Button, Card, Col, Form, InputGroup, Modal, Carousel} from "react-bootstrap";
 import { Link } from 'react-router-dom';
 
-import img from "./shopping.png"
+import img from "./bag.png"
 
 
 

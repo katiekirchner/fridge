@@ -9,8 +9,9 @@
     margin-left: 60%;
     bottom: 0;
     /* margin-top: 50%; */
-    height: 10%;
-    width: auto;
+    width: 80%;
+
+    height: auto;
 }
 
 
@@ -318,4 +319,8 @@ input.form-control {
 #final-add {
     width: 20%;
     margin: 100px 0px 0px 0px;
+}
+
+body{
+    height:130%;
 }
