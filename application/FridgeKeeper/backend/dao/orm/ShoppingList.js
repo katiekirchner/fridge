@@ -40,7 +40,13 @@ module.exports = class{
       queryDB(sql, [user_id], function (err, results) {
         console.log(results);
 
-        res.json(results);
+        if(err || results == null){
+          console.log(err)
+
+        } else{
+          res.json(results);
+        }
+
       })
     }
 }
