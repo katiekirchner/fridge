@@ -40,9 +40,9 @@ app.get('/backend/items', (req, res) => {
   ITEM.showItems(req, res);
 });
 
-app.get('/backend/shoppingList', (req, res) => {
-  SHOPPINGLIST.showShoppinglist(req, res);
-});
+// app.get('/backend/shoppingList', (req, res) => {
+//   SHOPPINGLIST.showShoppinglist(req, res);
+// });
 
 app.get('/backend/user', (req, res) => {
   USER.login(req, res);
