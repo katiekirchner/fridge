@@ -8,6 +8,8 @@ const app = express();
 const ITEM = require('./backend/controllers/item');
 const ACCOUNT = require('./backend/controllers/account');
 const USER = require('./backend/controllers/user');
+const SHOPPINGLIST = require('./backend/controllers/shoppingList');
+
 
 app.use(cors())
 app.use('/backend', router);
@@ -39,6 +41,10 @@ app.get('/test', (req, res) => {
 
 app.get('/backend/items', (req, res) => {
   ITEM.showItems(req, res);
+});
+
+app.get('/backend/shoppingList', (req, res) => {
+  SHOPPINGLIST.showShoppinglist(req, res);
 });
 
 app.get('/backend/user', (req, res) => {
