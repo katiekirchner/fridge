@@ -29,6 +29,5 @@ function showShoppinglist(req, res){
 
 module.exports = {
     addToList,
-    // deleteFromList,
     showShoppinglist
 }

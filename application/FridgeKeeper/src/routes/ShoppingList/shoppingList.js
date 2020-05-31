@@ -1,7 +1,4 @@
 
-import './shoppingList_style.css'
-
-
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -9,6 +6,7 @@ import NavBar from '../../components/Navbar/Navbar';
 import {FormControl, Row, Col, Card, Modal, Button, Image, Form} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
+import './shoppingList_style.css'
 
 
 class ShoppingList extends React.Component {
@@ -20,7 +18,7 @@ class ShoppingList extends React.Component {
 
 
     async componentDidMount() {
-        const response = await fetch('/backend/shoppingList?user_id=' + this.state.user_id,
+        const response = await fetch('backend/shoppingList?user_id=' + this.state.user_id,
         {
             method: 'GET',
         })
