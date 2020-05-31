@@ -16,20 +16,6 @@ class ShoppingList extends React.Component {
     };
 
 
-    sortResp(response){
-
-        response.sort((a, b) => {
-            if(a.name < b.name) { return -1 }
-            if(a.name > b.name) { return 1 }
-            return 0}
-            )
-            response.map((item, index)=>{
-            if (item.quantity_needed > 0) {
-                this.state.list_items.push(item);
-            }
-        });
-    }
-
     async componentDidMount() {
         var user_id = this.state.user_id;
 
@@ -41,24 +27,38 @@ class ShoppingList extends React.Component {
         })
 
 
-        const body = await response.json();
-        if(response.status !== 200 ) {
-            throw Error(body.message)
-        } else if (body.length > 0){
-            body.sort((a, b) => {
-                    if(a.name < b.name) { return -1 }
-                    if(a.name > b.name) { return 1 }
-                    return 0}
-                )
-            body.map((item, index)=>{
-                if (item.quantity_needed > 0) {
-                    this.state.list_items.push(item);
-                }
-            });
-        }
+
+        console.log(response)
+
+        const data = await response.json();
+        console.log(data);
+        data.sort((a, b) => {
+            if(a.name < b.name) { return -1 }
+            if(a.name > b.name) { return 1 }
+            return 0}
+        )
+        this.setState({list_items: data,loading:false})
+
+
+
+        // const body = await response.json();
+        // if(response.status !== 200 ) {
+        //     throw Error(body.message)
+        // } else if (body.length > 0){
+        //     body.sort((a, b) => {
+        //             if(a.name < b.name) { return -1 }
+        //             if(a.name > b.name) { return 1 }
+        //             return 0}
+        //         )
+        //     body.map((item, index)=>{
+        //         if (item.quantity_needed > 0) {
+        //             this.state.list_items.push(item);
+        //         }
+        //     });
+        // }
 
         
-        this.setState({loading:false})
+        // this.setState({loading:false})
 
         // this.getList()
         // this.addToList()
