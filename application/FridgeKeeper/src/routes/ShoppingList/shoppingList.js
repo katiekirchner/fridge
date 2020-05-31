@@ -33,8 +33,9 @@ class ShoppingList extends React.Component {
         {
             method: 'GET'
         })
-        .then(response => this.state.list_items.push(response.json()))
         .then(response => console.log(response))
+        .then(data => this.state.list_items.push(data))
+
 
         
 
