@@ -16,6 +16,21 @@ class ShoppingList extends React.Component {
     };
 
 
+    sortResp(body){
+
+        body.sort((a, b) => {
+            if(a.name < b.name) { return -1 }
+            if(a.name > b.name) { return 1 }
+            return 0}
+            )
+        body.map((item, index)=>{
+            if (item.quantity_needed > 0) {
+                this.state.list_items.push(item);
+            }
+        });
+    }
+
+
     async componentDidMount() {
         var user_id = this.state.user_id;
 
@@ -23,7 +38,7 @@ class ShoppingList extends React.Component {
         {
             method: 'GET'
         })
-        .then(response => this.sort(response))
+        .then(response => this.sortResp(response.json()))
         .then(response => console.log(response))
 
         
@@ -79,19 +94,7 @@ class ShoppingList extends React.Component {
         console.log(this.state.list_items)
     }
 
-    sort(body){
 
-        body.sort((a, b) => {
-            if(a.name < b.name) { return -1 }
-            if(a.name > b.name) { return 1 }
-            return 0}
-            )
-        body.map((item, index)=>{
-            if (item.quantity_needed > 0) {
-                this.state.list_items.push(item);
-            }
-        });
-    }
 
 
 
