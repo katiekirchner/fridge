@@ -21,7 +21,7 @@ class ShoppingList extends React.Component {
 
         console.log(this.state.user_id)
 
-        const response = await fetch('backend/shoppingList?user_id=' + user_id,
+        const response = await fetch('/backend/shoppingList?user_id=' + user_id,
         {
             method: 'GET'
         })
