@@ -39,22 +39,29 @@ class ShoppingList extends React.Component {
         {
             method: 'GET'
         })
-        .catch(err => console.log(err));
-        
+        console.log(response)
 
-        const body = await response.json();
-        if (body.length > 0){
-            body.sort((a, b) => {
-                    if(a.name < b.name) { return -1 }
-                    if(a.name > b.name) { return 1 }
-                    return 0}
-                )
-            body.map((item, index)=>{
-                if (item.quantity_needed > 0) {
-                    this.state.list_items.push(item);
-                }
-            });
-        }
+        const data = await response.json();
+        console.log(data);
+        data.sort((a, b) => {
+            if(a.name < b.name) { return -1 }
+            if(a.name > b.name) { return 1 }
+            return 0}
+        )
+
+
+        // if (body.length > 0){
+        //     body.sort((a, b) => {
+        //             if(a.name < b.name) { return -1 }
+        //             if(a.name > b.name) { return 1 }
+        //             return 0}
+        //         )
+        //     body.map((item, index)=>{
+        //         if (item.quantity_needed > 0) {
+        //             this.state.list_items.push(item);
+        //         }
+        //     });
+        // }
 
 
 
@@ -92,33 +99,33 @@ class ShoppingList extends React.Component {
     }
 
 
-    async getList() {
-        var user_id = this.state.user_id;
+    // async getList() {
+    //     var user_id = this.state.user_id;
 
 
-        const response = await fetch('backend/shoppingList?user_id=' + user_id,
-        {
-            method: 'GET'
-        });
+    //     const response = await fetch('backend/shoppingList?user_id=' + user_id,
+    //     {
+    //         method: 'GET'
+    //     });
         
 
-        const body = await response.json();
-        if(response.status !== 200) {
-            throw Error(body.message)
-        }
-        body.sort((a, b) => {
-                if(a.name < b.name) { return -1 }
-                if(a.name > b.name) { return 1 }
-                return 0}
-            )
-        body.map((item, index)=>{
-            if (item.quantity_needed > 0) {
-                this.state.list_items.push(item);
-            }
-        });
+    //     const body = await response.json();
+    //     if(response.status !== 200) {
+    //         throw Error(body.message)
+    //     }
+    //     body.sort((a, b) => {
+    //             if(a.name < b.name) { return -1 }
+    //             if(a.name > b.name) { return 1 }
+    //             return 0}
+    //         )
+    //     body.map((item, index)=>{
+    //         if (item.quantity_needed > 0) {
+    //             this.state.list_items.push(item);
+    //         }
+    //     });
 
-        this.setState({loading:false})
-    }
+    //     this.setState({loading:false})
+    // }
 
 
 
