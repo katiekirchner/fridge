@@ -4,7 +4,7 @@ const RECIPE_TABLE = 'recipe'
 const NUTRITION_TABLE = 'nutrition'
 const DIET_TABLE = 'dietary_restrictions'
 const IMAGE_TABLE = 'image'
-const SHOPPINGLIST_TABLE = 'shopList'
+const SHOPPINGLIST_TABLE = 'shoppingList'
 const RECIPEITEM_TABLE = 'recipeitem'
 
 module.exports = {
