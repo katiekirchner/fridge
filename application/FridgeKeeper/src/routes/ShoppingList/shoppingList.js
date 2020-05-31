@@ -27,9 +27,9 @@ class ShoppingList extends React.Component {
         
 
         const body = await response.json();
-        if(response.status !== 200) {
+        if(response.status !== 200 ) {
             throw Error(body.message)
-        } else{
+        } else if (body.length > 0){
             body.sort((a, b) => {
                     if(a.name < b.name) { return -1 }
                     if(a.name > b.name) { return 1 }
