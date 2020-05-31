@@ -18,11 +18,6 @@ class ShoppingList extends React.Component {
 
     sortResp(body){
 
-        body.sort((a, b) => {
-            if(a.name < b.name) { return -1 }
-            if(a.name > b.name) { return 1 }
-            return 0}
-            )
         body.map((item, index)=>{
             if (item.quantity_needed > 0) {
                 this.state.list_items.push(item);
@@ -38,7 +33,7 @@ class ShoppingList extends React.Component {
         {
             method: 'GET'
         })
-        .then(response => this.sortResp(response.json()))
+        .then(response => this.state.list_items.push(response))
         .then(response => console.log(response))
 
         
