@@ -30,10 +30,10 @@ module.exports = class{
     }
 
 
-    showlist(res){
-      const {user_id} = this
+    showlist(user_id, res){
+      // const {user_id} = this
 
-      const sql = `select distinct name, quantity_needed, image
+      const sql = `select name, quantity_needed, image
                     from shoppingList
                     where user_id = ${this.user_id} and quantity_needed > 0`
 

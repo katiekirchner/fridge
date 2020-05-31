@@ -21,10 +21,6 @@ function addToList (req, res){
 
 }
 
-// function deleteFromList(req, res){
-//     const {household_id, item_id, date} = req.body
-//   new ShoppingList(household_id, item_id, date).delete(res)
-// }
 
 function showShoppinglist(req, res){
   const user_id = req.query.user_id;
