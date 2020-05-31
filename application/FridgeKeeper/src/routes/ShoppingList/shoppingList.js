@@ -1,12 +1,15 @@
+
+import './shoppingList_style.css'
+
+
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import NavBar from '../../components/Navbar/Navbar';
-import {Image, Row, Col, Form} from 'react-bootstrap';
+import {FormControl, Row, Col, Card, Modal, Button, Image, Form} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-import './shoppingList_style.css'
-import { AlertHeading } from 'react-bootstrap/Alert';
+
 
 class ShoppingList extends React.Component {
     state = {

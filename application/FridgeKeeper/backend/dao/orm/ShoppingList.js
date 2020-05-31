@@ -35,22 +35,13 @@ module.exports = class{
 
     showlist(user_id, res){
 
-      const sql = `select name, quantity_needed, image
-                    from ${SHOPPINGLIST_TABLE}
-                    where user_id = ${this.user_id} and quantity_needed > 0`
+      const sql = `select * from ${SHOPPINGLIST_TABLE} where user_id = ? and quantity_needed > 0`
 
       queryDB(sql, [user_id], function (err, results) {
 
         console.log(results)
 
         res.send(results)
-        // if(err || results == null){
-        //   console.log(err)
-
-        // } else{
-        //   res.json(results);
-        // }
-
       })
     }
 }
