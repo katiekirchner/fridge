@@ -17,15 +17,10 @@ class ShoppingList extends React.Component {
 
 
     async componentDidMount() {
-        var user_id = this.state.user_id;
-
-        console.log(this.state.user_id)
-
-        const response = await fetch('/backend/shoppingList?user_id=' + user_id,
+        const response = await fetch('/backend/shoppingList?user_id=' + this.state.user_id,
         {
             method: 'GET'
         })
-
 
 
         console.log(response)
