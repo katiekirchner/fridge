@@ -22,7 +22,7 @@ router.put('/item',jsonParser, addItem)
 router.post('/ocr:ext',jsonParser, ocrParser)
 
 
-router.get('/shoppingList',jsonParser, showShoppinglist)
+// router.get('/shoppingList',jsonParser, showShoppinglist)
 router.put('/shoppingList',jsonParser, addToList)
 
 

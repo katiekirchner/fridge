@@ -33,7 +33,7 @@ module.exports = class{
 
 
 
-    showlist(user_id, res){
+   static showlist(user_id, res){
 
       const sql = `select * from ${SHOPPINGLIST_TABLE} where user_id = ? and quantity_needed > 0`
 
