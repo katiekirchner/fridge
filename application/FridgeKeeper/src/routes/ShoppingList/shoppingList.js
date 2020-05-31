@@ -22,7 +22,11 @@ class ShoppingList extends React.Component {
     async componentDidMount() {
         const response = await fetch('/backend/shoppingList?user_id=' + this.state.user_id,
         {
-            method: 'GET'
+            method: 'GET',
+            headers: { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+              }
         })
 
 
