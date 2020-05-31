@@ -4,13 +4,14 @@ import { Formik, ErrorMessage } from "formik"
 import * as Yup from "yup"
 import {Image} from "react-bootstrap";
 
+
 import lemons from "./lemons.jpg"
 import "./login_style.css";
 
 
 var sectionStyle = {
     width: "100%",
-    height: "1000px",
+    height: "2000px",
     resizeMode: 'repeat',
     backgroundImage: `url(${lemons})`
 };
@@ -22,7 +23,10 @@ class Login extends React.Component {
         fail: false
     };
 
+
     async login(username, password) {
+        localStorage.removeItem("user_id");
+
         const response = await fetch('/backend/user',
         {
             method: 'POST',
@@ -55,6 +59,7 @@ class Login extends React.Component {
     }
 
     createForm(){
+
         const{history} = this.props;
 
         return(

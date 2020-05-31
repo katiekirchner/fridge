@@ -10,7 +10,7 @@ import mangos from "./mangos.jpg"
 
 var sectionStyle = {
     width: "100%",
-    height: "1000px",
+    height: "2000px",
     resizeMode: 'repeat',
     backgroundImage: `url(${mangos})`
 };

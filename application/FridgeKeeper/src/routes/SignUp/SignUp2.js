@@ -11,7 +11,7 @@ import ban from "./bananas.jpg"
 
 var sectionStyle = {
     width: "100%",
-    height: "1000px",
+    height: "2000px",
     resizeMode: 'repeat',
     backgroundImage: `url(${ban})`
 };
@@ -41,6 +41,7 @@ class SignUp2 extends React.Component {
             })
         })
         const data = await response.json();
+        console.log("Sign up2: ", data)
         this.setState({signup: data})
     }
 
@@ -54,6 +55,8 @@ class SignUp2 extends React.Component {
             this.setState({fail: true})
             actions.setSubmitting(false)
         }
+        console.log("Sign up3: ", fields, actions, history)
+
         console.log(this.state.signup)
     }
 
@@ -127,13 +130,6 @@ class SignUp2 extends React.Component {
                                     <option>Dairy Free</option>
                                 </Form.Control>
                             </Form.Group>
-
-                   {/* <div className="form-group">
-                                <label>Household</label>
-                                <Link to="/addHousehold">
-                                    <button type="submit" className="add-button"> + </button>
-                                </Link>
-                            </div>          */}
 
                             {!this.state.fail ? (
                                 <p/>
